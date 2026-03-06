@@ -1,0 +1,66 @@
+{
+  "name": "vixlo-eshop",
+  "version": "1.0.0",
+  "description": "Vixl0 eShop Electron launcher",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "prepare-data": "python tools/export_games_json.py",
+    "dist:win": "npm run prepare-data && electron-builder --win nsis portable",
+    "dist:portable": "npm run prepare-data && electron-builder --win portable",
+    "dist:installer": "npm run prepare-data && electron-builder --win nsis"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^36.0.0",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "com.vixlo.eshop",
+    "productName": "Vixl0 eShop",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "index.html",
+      "styles.css",
+      "app.js",
+      "main.js",
+      "preload.js",
+      "covers/**/*",
+      "data/**/*",
+      "package.json"
+    ],
+    "extraMetadata": {
+      "main": "main.js"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Vixl0 eShop",
+      "artifactName": "${productName}-${version}-Setup.${ext}"
+    },
+    "portable": {
+      "artifactName": "${productName}-${version}-Portable.${ext}"
+    }
+  }
+}

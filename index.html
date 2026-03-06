@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vixl0 eShop</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="bg-gradient"></div>
+  <header class="topbar">
+    <div class="brand">Vixl0 eShop</div>
+    <nav class="tabs">
+      <button class="tab active" data-view="consoles">Consoles</button>
+      <button class="tab" data-view="franchises">Franchises</button>
+      <button class="tab" data-view="settings">Settings</button>
+    </nav>
+    <div class="search-wrap">
+      <input id="searchInput" type="search" placeholder="Search games..." />
+    </div>
+  </header>
+
+  <main class="app">
+    <section id="filtersSection" class="filters"></section>
+
+    <section id="librarySection" class="library">
+      <div id="stats" class="stats"></div>
+      <div id="gameGrid" class="game-grid"></div>
+      <div id="gridSentinel" class="grid-sentinel"></div>
+    </section>
+
+    <section id="settingsSection" class="settings hidden">
+      <h2>Settings</h2>
+      <div class="settings-grid">
+        <label>
+          Download Folder
+          <div class="folder-row">
+            <input id="downloadFolder" type="text" placeholder="E:\\Games" />
+            <button id="chooseFolder" class="btn-secondary" type="button">Browse</button>
+          </div>
+        </label>
+        <label>
+          Max Downloads
+          <input id="maxDownloads" type="number" min="1" max="10" step="1" />
+        </label>
+        <label>
+          Theme
+          <select id="themeSelect">
+            <option value="dark">Dark</option>
+            <option value="light">Light</option>
+          </select>
+        </label>
+      </div>
+      <div class="settings-actions">
+        <button id="saveSettings" class="btn-primary">Save Settings</button>
+        <button id="clearCache" class="btn-secondary">Reset Settings</button>
+      </div>
+    </section>
+  </main>
+
+  <aside class="download-manager">
+    <div class="dm-header">
+      <h3>Download Manager</h3>
+      <span id="dmCounters"></span>
+    </div>
+    <div id="downloadList" class="download-list"></div>
+  </aside>
+
+  <dialog id="detailsDialog" class="details-dialog">
+    <div class="details-content" id="detailsContent"></div>
+  </dialog>
+
+  <template id="cardTemplate">
+    <article class="game-card">
+      <div class="cover-wrap">
+        <img class="cover lazy" alt="" loading="lazy" />
+      </div>
+      <div class="card-body">
+        <h4 class="title"></h4>
+        <p class="meta"></p>
+        <p class="size"></p>
+        <div class="card-actions">
+          <button class="btn-primary btn-download">Download</button>
+          <button class="btn-secondary btn-details">Details</button>
+        </div>
+      </div>
+    </article>
+  </template>
+
+  <template id="downloadItemTemplate">
+    <div class="download-item">
+      <div class="download-top">
+        <strong class="name"></strong>
+        <span class="status"></span>
+      </div>
+      <div class="progress-track"><div class="progress-bar"></div></div>
+      <div class="download-bottom">
+        <span class="speed"></span>
+        <button class="btn-secondary btn-cancel">Cancel</button>
+      </div>
+      <div class="path"></div>
+      <div class="error"></div>
+    </div>
+  </template>
+
+  <script src="./app.js"></script>
+</body>
+</html>

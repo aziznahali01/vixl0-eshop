@@ -1,0 +1,10 @@
+node_modules/
+release/
+dist/
+build/
+__pycache__/
+*.pyc
+*.exe
+*.zip
+*.7z
+*.part
